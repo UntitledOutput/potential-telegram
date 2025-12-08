@@ -20,8 +20,20 @@ html, body {
     width: 100%;
 }
 
-body {
+.table {
     display: table;
+    width: 100%;
+    height: 100%;
+    
+}
+
+footer {
+  position: absolute;
+  bottom: 1%;
+  left: 50%; /* 50% from the left edge of the containing block */
+  transform: translateX(-50%); /* To center horizontally if using 50% left */
+
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .center {
@@ -30,14 +42,33 @@ body {
     vertical-align: middle;
 }
 
+.bottom {
+    text-align: center;
+    display: table-cell;
+    vertical-align: bottom;
+}
+
 .anton-regular {
   font-family: "Anton", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
+footer a {
+  color: rgb(197, 197, 197);
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Make text bold */
+}
+
+
 a {
   color: rgb(77, 77, 77); /* Change link color */
   text-decoration: none; /* Remove underline */
   font-weight: bold; /* Make text bold */
+}
+
+#center-text {
+  font-size: 4em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
