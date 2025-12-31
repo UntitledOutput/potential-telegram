@@ -31,11 +31,11 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body > 
     
     <div class="table">
         <div class="center">
-            <h1 class="anton-regular">49</h1>
+            <h1 class="anton-regular" id="center-number">49</h1>
             <h1 class="anton-regular" id="center-text">0d 0h 0m 0s</h1>
             <a href="https://www.instagram.com/leulstuco/"><h2 class="anton-regular" >@leulstuco on Instagram</h2></a>
         </div>
@@ -46,29 +46,72 @@
     </footer>
 
     <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date("Jan 5, 2026 19:30:00").getTime();
+        function lerpColor(color1, color2, amount) {
+            
+            const parseColor = (c) => {
+                if (c.startsWith('#')) {
+                    
+                    const hex = c.slice(1);
+                    
+                    const fullHex = hex.length === 3 
+                        ? hex.split('').map(char => char + char).join('') 
+                        : hex;
+                    return [
+                        parseInt(fullHex.slice(0, 2), 16),
+                        parseInt(fullHex.slice(2, 4), 16),
+                        parseInt(fullHex.slice(4, 6), 16)
+                    ];
+                } else {
+                    
+                    return c.match(/\d+/g).map(Number);
+                }
+            };
+            
+            const [r1, g1, b1] = parseColor(color1);
+            const [r2, g2, b2] = parseColor(color2);
 
-        // Update the count down every 1 second
+            
+            const r = Math.round(r1 + (r2 - r1) * amount);
+            const g = Math.round(g1 + (g2 - g1) * amount);
+            const b = Math.round(b1 + (b2 - b1) * amount);
+
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        
+        var countDownDate = new Date("Jan 7, 2026 17:00:00").getTime();
+        //countDownDate = new Date("Dec 31, 2025 00:30:00").getTime();
+
+        
         var x = setInterval(function() {
 
-        // Get today's date and time
+        
         var now = new Date().getTime();
+        var grad_start = new Date("Dec 31, 2025 00:00:00").getTime();
 
-        // Find the distance between now and the count down date
+        
         var distance = countDownDate - now;
+        var progress = (now - grad_start) / (countDownDate - grad_start);
+        if (progress > 1)
+            progress = 1
 
-        // Time calculations for days, hours, minutes and seconds
+        document.body.style.backgroundColor = lerpColor("rgb(255,255,255)", "#b11919", progress)
+        document.getElementById("center-text").style.color = lerpColor("rgb(0,0,0)", "#ecca16", progress)
+        document.getElementById("center-number").style.color = lerpColor("rgb(0,0,0)", "#ecca16", progress)
+
+
+
+        
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Display the result in the element with id="demo"
+        
         document.getElementById("center-text").innerHTML = days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
 
-        // If the count down is finished, write some text
+        
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("center-text").innerHTML = "👀";

@@ -55,7 +55,7 @@ footer {
 }
 
 footer a {
-  color: rgb(197, 197, 197);
+  color: rgba(12, 12, 12, 0.524);
   text-decoration: none; /* Remove underline */
   font-weight: bold; /* Make text bold */
   font-size: 0.75em;
@@ -63,7 +63,7 @@ footer a {
 
 
 a {
-  color: rgb(77, 77, 77); /* Change link color */
+  color: rgba(0, 0, 0, 0.67); /* Change link color */
   text-decoration: none; /* Remove underline */
   font-weight: bold; /* Make text bold */
 }
