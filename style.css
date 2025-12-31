@@ -18,6 +18,7 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
+    background-color: black;
 }
 
 .table {
@@ -52,10 +53,11 @@ footer {
   font-family: "Anton", sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: white;
 }
 
 footer a {
-  color: rgba(12, 12, 12, 0.524);
+  color: rgba(255, 255, 255, 0.524);
   text-decoration: none; /* Remove underline */
   font-weight: bold; /* Make text bold */
   font-size: 0.75em;
@@ -63,7 +65,7 @@ footer a {
 
 
 a {
-  color: rgba(0, 0, 0, 0.67); /* Change link color */
+  color: rgba(255, 255, 255, 0.67); /* Change link color */
   text-decoration: none; /* Remove underline */
   font-weight: bold; /* Make text bold */
 }

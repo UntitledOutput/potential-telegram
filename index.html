@@ -95,9 +95,10 @@
         if (progress > 1)
             progress = 1
 
-        document.body.style.backgroundColor = lerpColor("rgb(255,255,255)", "#b11919", progress)
-        document.getElementById("center-text").style.color = lerpColor("rgb(0,0,0)", "#ecca16", progress)
-        document.getElementById("center-number").style.color = lerpColor("rgb(0,0,0)", "#ecca16", progress)
+
+        document.body.style.backgroundColor = lerpColor("rgb(0,0,0)", "#b11919", progress)
+        document.getElementById("center-text").style.color = lerpColor("rgb(255,255,255)", "#ecca16", progress)
+        document.getElementById("center-number").style.color = lerpColor("rgb(255,255,255)", "#ecca16", progress)
 
 
 
