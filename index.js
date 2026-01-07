@@ -53,7 +53,7 @@ function close_fullscreen() {
 }
 
 function link(url) {
-  url = "{{ site.baseurl }}"+url
+  url = "{{ site.baseurl }}"+url+"?bypass-ctd"
   transitionToPage(url)
 }
 
