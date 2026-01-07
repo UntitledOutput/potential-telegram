@@ -1,0 +1,3 @@
+baseurl: ""
+url: "https://leul4smob.com"
+gem 'github-pages', group: :jekyll_plugins
