@@ -26,12 +26,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 });
-
-window.addEventListener("load", function(event) {
-  document.querySelector('body').style.opacity = 1; /* Fade in on load */
-
+window.addEventListener("pageshow", function(event) {
+  document.querySelector('body').style.opacity = 1; /* Fade in on load and back button */
 });
-
 
 
 
@@ -59,12 +56,9 @@ function link(url) {
 
 
 window.transitionToPage = function(href) {
+  close_fullscreen()
   document.querySelector('body').style.opacity = 0;
   setTimeout(function() {
     window.location.href = href; /* Redirect after the animation */
   }, 500); /* Must match the CSS transition duration */
-}
-
-if (window.performance && window.performance.getEntriesByType("navigation")[0].type === "back_forward") {
-  document.querySelector('body').style.opacity = 1; /* Fade in on load */
 }
