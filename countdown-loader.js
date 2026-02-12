@@ -35,7 +35,7 @@ var days = Math.floor(distance / (1000 * 60 * 60 * 24))
 
 const urlParams = new URLSearchParams(window.location.search);
 
-if (seconds > 0 && !urlParams.has("bypass-ctd")) {
+if (seconds > 0) {
 
     document.addEventListener("DOMContentLoaded", function(event) {
     fetch('{{ site.baseurl }}/countdown.html')
