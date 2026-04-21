@@ -156,12 +156,26 @@ async function shareImage() {
 
       const url = "https://cdn.jsdelivr.net/gh/UntitledOutput/leul4smob-dev@main/res/school/posts/" + school + ".png";
 
-      console.log(url)
+      const webURL = "https://script.google.com/macros/s/AKfycbxCrsrVBw2Dbydpphg-p7bL1cHNqT-DJCIrBKCfsV4C2dliuDPs-1zZPCXrriW12Qw/exec";
+
+      const updateData = {
+        id: school,      // The ID you are looking for in Column A
+      };
+
+      fetch(webURL, {
+        method: "POST",
+        mode: "no-cors", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updateData)
+      })
+      .then(() => console.log("Update request sent!"))
+      .catch(err => console.error("Error:", err));
+
 
       // Fetch the image as a blob
       const response = await fetch( url );
       const blob = await response.blob();
-      const file = new File([blob], school + ".png", { tye: "image/png" });
+      const file = new File([blob], school + ".png", { type: "image/png" });
 
       // Share using native mechanism
       await navigator.share({
