@@ -24,12 +24,24 @@ html, body {
 
 
 body {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #b11919;
-    opacity: 0;
-    transition: opacity .5s; /* The transition effect */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #b11919;
+  opacity: 1;
+  transition: opacity .5s; /* The transition effect */
+}
+
+html.js body {
+  opacity: 0;
+}
+
+html.js body.is-loaded {
+  opacity: 1;
+}
+
+body.is-transitioning {
+  opacity: 0;
 }
 
 .center {
@@ -84,6 +96,10 @@ li span {
     box-shadow: 0 2em 2em rgba(0,0,0,0.25);
 }
 
+.tdiv-top {
+
+    position: fixed; /* or fixed if you want it to stay at top while scrolling */
+}
 .top-bar-left ul,
 .top-bar-right ul {
     list-style: none;
@@ -118,7 +134,7 @@ li span {
 }
 
 
-.top-bar-right span {
+.top-bar-right .nav-link {
     color: #fff;
     text-decoration: none;
     display: block;
@@ -127,9 +143,13 @@ li span {
     font-size: 125%;
     padding: 0.5em;
 
+  background: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
 }
 
-.top-bar-right span:hover {
+.top-bar-right .nav-link:hover {
     background-color: #5a0b0b50;
 }
 
@@ -185,6 +205,10 @@ li span {
 }
 
 .list-wrapper li {
+  list-style: none;
+}
+
+.list-wrapper .menu-link {
     padding: 0.5em;
     margin: 1em;
     text-align: center;
@@ -199,6 +223,11 @@ li span {
       background-color 0.3s ease,
       color 0.3s ease;
     font-weight: bold;
+
+    background: none;
+    border: 0;
+    width: 100%;
+    cursor: pointer;
 }
 
 
@@ -206,6 +235,8 @@ li span {
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 1em;
+  background: none;
+  border: 0;
 }
 
 #logo-btn:hover {
@@ -213,13 +244,32 @@ li span {
 
 }
 
-.list-wrapper li:hover {
+.list-wrapper .menu-link:hover {
   background-color: #00000044;
   cursor: pointer;
 }
 
-.list-wrapper li:active {
+.list-wrapper .menu-link:active {
   background-color: #0000006c;
+}
+
+button,
+[role="button"] {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid #ecca16;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 
@@ -347,6 +397,8 @@ li span {
   height: 3em;
   display: table-cell;
   float: left;
+  background: none;
+  border: 0;
 }
 
 .footer-socials button img {
@@ -554,6 +606,81 @@ li span {
   justify-self: center;
 }
 
+.school-section {
+  padding: 10vw;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  box-sizing: border-box; /* Include padding in height calculation */
+  display: flex; /* Flexbox is the most reliable method */
+}
+
+.school-content {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 3em;
+  grid-auto-rows: 30vh;
+  height: auto;
+}
+
+.school-content .school-container {
+  flex-grow: 1;      /* Allows child to fill available space */
+  display: flex;     /* Makes the child a flex container for grandchildren */
+  flex-direction: row; /* Stacks grandchildren vertically */
+  justify-content: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.school-container img {
+
+  object-fit: contain;
+  height: 75%;
+  width: 100%;
+
+  background-color: darkred;
+  padding: 1em;
+  border-radius: 1em;
+
+
+}
+
+.school-container h2 {
+  height: auto;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  height: 25%;
+  font-size: 1.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.school-container:hover {
+  transform: scale(1.05);
+}
+
+.vote-button {
+  background-color: var(--primary-color);
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-size: 3.5vw;
+  width: 100%;
+  cursor: pointer;
+  animation: pulse-animation 0.5s infinite;
+  user-select: none;
+}
+
+
+@keyframes pulse-animation {
+  0% { transform: scale(1);  }
+  50% { transform: scale(1.025); background-color: #e03939; }
+  100% { transform: scale(1); }
+}
+
 @media screen and (min-width: 1200px) {
 
 .text-content div p {
@@ -590,8 +717,16 @@ li span {
     height: auto; /* Allow natural height on mobile */
   }
 
+  .school-content {
+    grid-template-columns: auto;
+  }
+
   .text-content div {
       width: 100%;
+  }
+
+  .vote-button {
+    font-size: 3.5vh;
   }
 
   .text-content div p {
