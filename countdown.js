@@ -61,11 +61,16 @@ function check() {
 
     var ct = document.getElementById("center-text")
 
-    document.getElementById("center-text").innerHTML = "ALMOST TIME TO VOTE!! VOTE FOR LEUL DAWIT (that's me!!) AS YOUR SMOB IN "
+    document.getElementById("center-text").innerHTML = "MCPS, ITS TIME. YOU HAVE "
     
     //ct.innerHTML = "aaaaaaaaaaaaa"
 
-    document.getElementById("center-text").innerHTML += days + "D " + hours + "H "+ minutes + "M " + seconds + "S &nbsp;";
+    document.getElementById("center-text").innerHTML += hours + "H "+ minutes + "M " + seconds + "S";
+
+    ct.innerHTML += " TO VOTE!!"
+
+    ct.innerHTML += "&nbsp;"
+
 
     document.getElementById("center-text-2").innerHTML = ct.innerHTML
     document.getElementById("center-text-2").style.color = ct.style.color
@@ -75,6 +80,7 @@ function check() {
 
     document.getElementById("center-text-4").innerHTML = ct.innerHTML
     document.getElementById("center-text-4").style.color = ct.style.color
+
 
     
     if (distance < 0) {

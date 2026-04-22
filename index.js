@@ -24,7 +24,7 @@ function fetchInto(selector, url) {
     });
 }
 
-var countdown_date = "Apr 22, 2026 07:00:00";
+var countdown_date = "Apr 22, 2026 15:30:00";
 
 //countdown_date = new Date(new Date().getTime() + 3000)
 
