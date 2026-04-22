@@ -61,13 +61,11 @@ function check() {
 
     var ct = document.getElementById("center-text")
 
-    document.getElementById("center-text").innerHTML = "MCPS, ITS TIME. YOU HAVE "
+    document.getElementById("center-text").innerHTML = "MCPS, THANK YOU SO MUCH FOR EVERYTHING. RESULTS WILL BE ANNOUNCED IN "
     
     //ct.innerHTML = "aaaaaaaaaaaaa"
 
     document.getElementById("center-text").innerHTML += hours + "H "+ minutes + "M " + seconds + "S";
-
-    ct.innerHTML += " TO VOTE!!"
 
     ct.innerHTML += "&nbsp;"
 
